@@ -1,49 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome</title>
-  <link rel="stylesheet" href="styles.css"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Mipc Coding & Robotics Club</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <div class="shell">
-    <nav class="nav">
-      <div class="brand">SimpleApp</div>
-      <div class="nav-actions">
-        <a class="link" href="login.html">Login</a>
-        <a class="btn" href="signup.html">Sign up</a>
-      </div>
-    </nav>
-
-    <main class="hero">
-      <div class="card hero-card">
-        <h1>Welcome 👋</h1>
-        <p class="muted">
-          A small starter auth flow using HTML, CSS and JavaScript.
-          Create an account, log in, and land on your dashboard.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn" href="signup.html">Get started</a>
-          <a class="btn ghost" href="login.html">I already have an account</a>
+    <header class="topbar">
+        <div class="wrap bar">
+            <div class="logo"> Mipc Coding & Robotics CLUB</div>
+            <nav class="nav">
+                <a href="#about">About</a>
+                <a href="#tracks">Tracks</a>
+                <a href="#projects">Projects</a>
+                <a href="#events">Events</a>
+                <a href="login.html" class="btn">Login</a>
+                <a href="signup.html" class="btn outline">Join</a>
+            </nav>
+            <button class="menu" id="menuBtn">Menu</button>
         </div>
-
-        <div class="tiny muted">
-          Demo only: data is stored in your browser (localStorage).
+        <div class="wrap mobile-nav" id="mobileNav">
+            <a href="#about">About</a>
+            <a href="#tracks">Tracks</a>
+            <a href="#projects">Projects</a>
+            <a href="#events">Events</a>
+            <a href="login.html">Login</a>
+            <a href="signup.html">Join</a>
         </div>
-      </div>
+    </header>
+
+    <main class="wrap">
+        <section class="hero">
+            <div class="hero-left">
+                <div class="tag">School Club • Code • Build • Compete</div>
+                <h1>We learn by building real robots and real software.</h1>
+                <p class="lead">
+                    A student-led club focused on programming, electronics, and robotics.
+                    Weekly workshops, team projects, and competitions — beginner friendly.
+                </p>
+                <div class="hero-actions">
+                    <a class="btn" href="signup.html">Become a member</a>
+                    <a class="btn outline" href="#events">See upcoming events</a>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-num">4+</div>
+                        <div class="stat-label">Learning Tracks</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">12+</div>
+                        <div class="stat-label">Projects per Term</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">1</div>
+                        <div class="stat-label">Team, many skills</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="panel">
+                    <div class="panel-title">This week’s focus</div>
+                    <ul class="list">
+                        <li><span class="dot"></span> Arduino sensors: ultrasonic + servo</li>
+                        <li><span class="dot"></span> Web: responsive layout + JS DOM</li>
+                        <li><span class="dot"></span> Git: branching + pull requests</li>
+                        <li><span class="dot"></span> Robotics: line follower tuning</li>
+                    </ul>
+                    <div class="panel-footer">
+                        <a href="signup.html" class="link">Join to access resources →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="section-head">
+                <h2>About the club</h2>
+                <p class="muted">
+                    We combine coding and hardware to solve problems. Members work in teams and
+                    present builds at the end of each month.
+                </p>
+            </div>
+
+            <div class="grid3">
+                <div class="box">
+                    <div class="box-title">Mission</div>
+                    <p class="muted">Grow practical skills in software, robotics and teamwork through projects.</p>
+                </div>
+                <div class="box">
+                    <div class="box-title">Culture</div>
+                    <p class="muted">Respect, consistency, sharing knowledge, and building before overthinking.</p>
+                </div>
+                <div class="box">
+                    <div class="box-title">For beginners</div>
+                    <p class="muted">No experience required. We start from basics and pair students up.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tracks" class="section">
+            <div class="section-head">
+                <h2>Learning tracks</h2>
+                <p class="muted">Pick a track or mix them. Most projects use all tracks together.</p>
+            </div>
+
+            <div class="grid2">
+                <div class="box">
+                    <div class="box-title">Web & App Development</div>
+                    <p class="muted">HTML/CSS/JS, React basics, simple dashboards, APIs.</p>
+                    <div class="chips">
+                        <span class="chip">Frontend</span><span class="chip">UI</span><span class="chip">APIs</span>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-title">Robotics & Electronics</div>
+                    <p class="muted">Arduino, sensors, motors, power, prototyping and testing.</p>
+                    <div class="chips">
+                        <span class="chip">Arduino</span><span class="chip">Sensors</span><span
+                            class="chip">Motors</span>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-title">Programming Foundations</div>
+                    <p class="muted">Algorithms, debugging, data structures, problem solving.</p>
+                    <div class="chips">
+                        <span class="chip">Logic</span><span class="chip">Debugging</span><span class="chip">DSA</span>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-title">Team & Competition Prep</div>
+                    <p class="muted">Pitching, documentation, Git workflow, competition readiness.</p>
+                    <div class="chips">
+                        <span class="chip">Git</span><span class="chip">Docs</span><span class="chip">Teamwork</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="section-head">
+                <h2>Current projects</h2>
+                <p class="muted">Examples you can build with us this term.</p>
+            </div>
+
+            <div class="grid3">
+                <div class="box">
+                    <div class="box-title">Line Follower Robot</div>
+                    <p class="muted">IR sensors + motor driver + tuning for speed and accuracy.</p>
+                    <a class="link" href="signup.html">Join to get build guide →</a>
+                </div>
+                <div class="box">
+                    <div class="box-title">Smart Attendance</div>
+                    <p class="muted">QR-based sign-in dashboard for club sessions.</p>
+                    <a class="link" href="signup.html">Join to access repo →</a>
+                </div>
+                <div class="box">
+                    <div class="box-title">Mini Weather Station</div>
+                    <p class="muted">Temp/humidity + display + data logging to browser.</p>
+                    <a class="link" href="signup.html">Join to learn sensors →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="events" class="section">
+            <div class="section-head">
+                <h2>Upcoming sessions</h2>
+                <p class="muted">Weekly meetups and monthly demo day.</p>
+            </div>
+
+            <div class="table">
+                <div class="trow head">
+                    <div>Date</div>
+                    <div>Topic</div>
+                    <div>Room</div>
+                    <div>Time</div>
+                </div>
+                <div class="trow">
+                    <div>Wednesday</div>
+                    <div>Arduino Sensors + Servo</div>
+                    <div>Lab A</div>
+                    <div>16:00</div>
+                </div>
+                <div class="trow">
+                    <div>Friday</div>
+                    <div>Web UI + JS Practice</div>
+                    <div>ICT Room</div>
+                    <div>15:30</div>
+                </div>
+                <div class="trow">
+                    <div>Last Saturday</div>
+                    <div>Demo Day (Show your build)</div>
+                    <div>Hall</div>
+                    <div>10:00</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="cta-inner">
+                <div>
+                    <h3>Ready to build with the team?</h3>
+                    <p class="muted">Create an account to access resources, schedules, and your member dashboard.</p>
+                </div>
+                <div class="cta-actions">
+                    <a class="btn" href="signup.html">Join now</a>
+                    <a class="btn outline" href="login.html">Login</a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="footer muted">
-      © <span id="year"></span> SimpleApp
+    <footer class="footer">
+        <div class="wrap foot">
+            <div class="muted">© <span id="year"></span> Mipc Coding & Robotics Club</div>
+            <div class="muted">Built by Topray • Practice project</div>
+        </div>
     </footer>
-  </div>
 
-  <script src="app.js"></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    if (localStorage.getItem("session")) window.location.href = "dashboard.html";
-  </script>
+    <script src="app.js"></script>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        if (localStorage.getItem("session")) window.location.href = "dashboard.html";
+
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileNav = document.getElementById("mobileNav");
+        menuBtn.addEventListener("click", () => mobileNav.classList.toggle("open"));
+    </script>
 </body>
+
 </html>

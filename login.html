@@ -1,49 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome</title>
-  <link rel="stylesheet" href="styles.css"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login • Club</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <div class="shell">
-    <nav class="nav">
-      <div class="brand">SimpleApp</div>
-      <div class="nav-actions">
-        <a class="link" href="login.html">Login</a>
-        <a class="btn" href="signup.html">Sign up</a>
-      </div>
-    </nav>
-
-    <main class="hero">
-      <div class="card hero-card">
-        <h1>Welcome 👋</h1>
-        <p class="muted">
-          A small starter auth flow using HTML, CSS and JavaScript.
-          Create an account, log in, and land on your dashboard.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn" href="signup.html">Get started</a>
-          <a class="btn ghost" href="login.html">I already have an account</a>
+    <header class="topbar">
+        <div class="wrap bar">
+            <div class="logo"><a class="plain" href="index.html"> Mipc Coding & Robotics CLUB</a></div>
+            <nav class="nav">
+                <a href="signup.html" class="btn outline">Join</a>
+            </nav>
         </div>
+    </header>
 
-        <div class="tiny muted">
-          Demo only: data is stored in your browser (localStorage).
+    <main class="wrap auth">
+        <div class="auth-shell">
+            <div class="auth-left">
+                <h1>Member Login</h1>
+                <p class="muted">Access resources, project guides, and your dashboard.</p>
+                <div class="note">
+                    <div class="note-title">What you get</div>
+                    <ul class="list">
+                        <li><span class="dot"></span> Project build guides</li>
+                        <li><span class="dot"></span> Weekly tasks and resources</li>
+                        <li><span class="dot"></span> Team roles and progress</li>
+                    </ul>
+                </div>
+            </div>
+
+            <form class="form" id="loginForm">
+                <div class="form-head">
+                    <div class="form-title">Login</div>
+                    <div class="muted small">Use your email and password.</div>
+                </div>
+
+                <div class="field">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="you@example.com" required />
+                </div>
+
+                <div class="field">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required />
+                </div>
+
+                <button class="btn full" type="submit">Continue</button>
+
+                <div class="alert" id="loginAlert" aria-live="polite"></div>
+
+                <div class="muted small">
+                    No account? <a class="link" href="signup.html">Create one</a>
+                </div>
+            </form>
         </div>
-      </div>
     </main>
 
-    <footer class="footer muted">
-      © <span id="year"></span> SimpleApp
+    <footer class="footer">
+        <div class="wrap foot">
+            <div class="muted">Demo auth: stored locally in your browser.</div>
+        </div>
     </footer>
-  </div>
 
-  <script src="app.js"></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    if (localStorage.getItem("session")) window.location.href = "dashboard.html";
-  </script>
+    <script src="app.js"></script>
+    <script>
+        if (localStorage.getItem("session")) window.location.href = "dashboard.html";
+
+        const form = document.getElementById("loginForm");
+        const alertBox = document.getElementById("loginAlert");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            alertBox.textContent = "";
+            alertBox.classList.remove("show", "ok");
+
+            const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+            const password = document.getElementById("loginPassword").value;
+
+            const res = await Auth.login(email, password);
+
+            if (!res.ok) {
+                alertBox.textContent = res.message;
+                alertBox.classList.add("show");
+                return;
+            }
+
+            alertBox.textContent = "Logged in. Redirecting...";
+            alertBox.classList.add("show", "ok");
+            setTimeout(() => (window.location.href = "dashboard.html"), 500);
+        });
+    </script>
 </body>
+
 </html>
