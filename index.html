@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+      <div class="brand">SimpleApp</div>
+      <div class="nav-actions">
+        <a class="link" href="login.html">Login</a>
+        <a class="btn" href="signup.html">Sign up</a>
+      </div>
+    </nav>
+
+    <main class="hero">
+      <div class="card hero-card">
+        <h1>Welcome 👋</h1>
+        <p class="muted">
+          A small starter auth flow using HTML, CSS and JavaScript.
+          Create an account, log in, and land on your dashboard.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="signup.html">Get started</a>
+          <a class="btn ghost" href="login.html">I already have an account</a>
+        </div>
+
+        <div class="tiny muted">
+          Demo only: data is stored in your browser (localStorage).
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer muted">
+      © <span id="year"></span> SimpleApp
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    if (localStorage.getItem("session")) window.location.href = "dashboard.html";
+  </script>
+</body>
+</html>

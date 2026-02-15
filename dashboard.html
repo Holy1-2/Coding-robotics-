@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+      <div class="brand"><a class="brand-link" href="index.html">SimpleApp</a></div>
+      <div class="nav-actions">
+        <button class="btn ghost" id="logoutBtn" type="button">Logout</button>
+      </div>
+    </nav>
+
+    <main class="dash">
+      <div class="card dash-card">
+        <h2 id="hello">Dashboard</h2>
+        <p class="muted" id="emailLine"></p>
+
+        <div class="divider"></div>
+
+        <div class="grid">
+          <div class="mini">
+            <div class="mini-title">Status</div>
+            <div class="mini-value" id="status">Active</div>
+          </div>
+          <div class="mini">
+            <div class="mini-title">Joined</div>
+            <div class="mini-value" id="joined">—</div>
+          </div>
+          <div class="mini">
+            <div class="mini-title">Local ID</div>
+            <div class="mini-value" id="uid">—</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer muted">You’re logged in on this browser.</footer>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    const session = Auth.getSession();
+    if (!session) window.location.href = "login.html";
+
+    const user = Auth.getUserById(session.userId);
+    if (!user) {
+      Auth.logout();
+      window.location.href = "login.html";
+    }
+
+    document.getElementById("hello").textContent = `Hi, ${user.name}`;
+    document.getElementById("emailLine").textContent = user.email;
+    document.getElementById("uid").textContent = user.id;
+    document.getElementById("joined").textContent = new Date(user.createdAt).toLocaleString();
+
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      Auth.logout();
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>

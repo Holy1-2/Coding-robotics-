@@ -1,0 +1,48 @@
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0b0c10;color:#eaeef7}
+a{color:inherit;text-decoration:none}
+.shell{min-height:100vh;display:flex;flex-direction:column}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 22px}
+.brand{font-weight:700;letter-spacing:.4px}
+.brand-link{opacity:.95}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.link{opacity:.85}
+.link:hover{opacity:1;text-decoration:underline}
+.btn{border:1px solid rgba(255,255,255,.14);background:#ffffff;color:#0b0c10;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn.ghost{background:transparent;color:#eaeef7}
+.full{width:100%}
+
+.hero{flex:1;display:grid;place-items:center;padding:24px}
+.auth{flex:1;display:grid;place-items:center;padding:24px}
+.dash{flex:1;display:grid;place-items:center;padding:24px}
+
+.card{width:min(520px,92vw);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.hero-card h1{margin:0 0 8px;font-size:34px}
+.hero-actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+.muted{opacity:.78;line-height:1.5}
+.tiny{font-size:12px;margin-top:14px}
+.small{font-size:13px}
+
+.form h2{margin:0 0 6px}
+.field{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+label{font-size:13px;opacity:.8}
+input{padding:12px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.25);color:#eaeef7;outline:none}
+input:focus{border-color:rgba(255,255,255,.35)}
+.row{margin-top:16px}
+
+.alert{margin-top:14px;font-size:13px;opacity:.9;display:none;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06)}
+.alert.show{display:block}
+.alert.ok{border-color:rgba(140,255,190,.35);background:rgba(140,255,190,.08)}
+
+.divider{height:1px;background:rgba(255,255,255,.12);margin:16px 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mini{border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.18);padding:12px;border-radius:14px}
+.mini-title{font-size:12px;opacity:.7}
+.mini-value{margin-top:6px;font-weight:700}
+
+.footer{padding:18px 22px;text-align:center}
+@media (max-width:560px){
+  .grid{grid-template-columns:1fr}
+}
