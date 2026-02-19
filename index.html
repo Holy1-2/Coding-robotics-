@@ -149,10 +149,28 @@
 
     footer {
         background: #000;
-        color: #c4c4c4;
+        color: #a9a9a9;
         text-align: center;
-        padding: 16px 10px;
+        padding: 18px 12px;
         border-top: 1px solid var(--line);
+    }
+
+    .footer-content {
+        width: min(900px, 92%);
+        margin: 0 auto;
+        display: grid;
+        gap: 6px;
+        justify-items: center;
+    }
+
+    .footer-content p {
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .footer-content i {
+        color: var(--accent);
+        margin-right: 6px;
     }
 
     @media (max-width: 700px) {
@@ -204,7 +222,11 @@
     </section>
 
     <footer>
-        <p>&copy; 2023 The one Portfolio</p>
+        <div class="footer-content">
+            <p><i class="fa-solid fa-school"></i> The one Portfolio</p>
+            <p>Coding & Robotics Club</p>
+            <p>&copy; 2023</p>
+        </div>
     </footer>
 </body>
 </html>
