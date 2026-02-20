@@ -3,405 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Font Awesome 6 (free) -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <title>Portfolio – Topray's Team [ Lucky's Edition ]</title>
+
+    <title>Portfolio – Modern Full Width</title>
+
     <style>
-        /* ----- root design tokens (kept) ----- */
         :root {
             --bg: #050505;
             --surface: #0a0a0a;
             --surface-2: #101010;
             --text: #ffffff;
-            --muted: #a9a9a9;
+            --muted: #bbb;
             --line: #222;
             --accent: #2ea7b5;
         }
 
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
             color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-padding-top: 80px;
         }
 
-        /* ----- header (unchanged but width adapts) ----- */
+        a { text-decoration: none; color: inherit; }
+
         header {
+            width: 100%;
             background: #000;
-            color: var(--text);
-            padding: 14px 0;
             border-bottom: 1px solid var(--line);
         }
 
         nav {
-            width: min(1100px, 92%);
-            margin: 0 auto;
+            padding: 20px 60px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        h1, h6 {
-            margin: 0;
-        }
-
-        h1 {
-            font-size: 2rem;
+        .brand h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
             color: var(--accent);
         }
 
-        h6 {
-            color: var(--muted);
-            font-weight: 500;
-        }
+        .brand p { color: var(--muted); }
 
         nav ul {
             list-style: none;
-            margin: 0;
-            padding: 10px 14px;
-            border: 1px solid var(--line);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        nav ul li a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.2s ease;
-        }
-
-        nav ul li a:hover {
-            color: #000;
-        }
-
-        /* ----- skills section (preserved) ----- */
-        .skills-section {
-            background: var(--surface);
-            padding: 36px;
-            margin: 36px auto;
-            width: min(900px, 92%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            border: 1px solid #fff;
-            border-radius: 14px;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-        }
-
-        .skills-section:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
-        }
-
-        .skills-section h3 {
-            margin: 0 0 20px;
-            color: #fff;
-            font-size: 1.75rem;
-        }
-
-        .skills-section ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
-        }
-
-        .skills-section ul li {
-            min-height: 110px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 18px;
-            color: #fff;
-            background: var(--surface-2);
-            border: 1px solid var(--line);
-            border-radius: 10px;
-            font-size: 1.1rem;
-            text-align: center;
-            transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .skills-section ul li i {
-            color: var(--accent);
-            font-size: 1.3rem;
-        }
-
-        .skills-section ul li:hover {
-            background: #141414;
-            border-color: linen;
-            transform: translateY(-3px);
-        }
-
-        /* ========== REFINED FULL‑WIDTH FOOTER ========== */
-        /* now 100% wide, better icon selection, expanded spacing */
-        footer {
-            background: #000;
-            color: var(--muted);
-            width: 100%;                    /* forces full width */
-            padding: 60px 0 30px;            /* vertical breathing, no horizontal padding */
-            border-top: 1px solid var(--line);
-            margin-top: 60px;
-        }
-
-        /* inner container with max-width for content, but footer background stays 100% */
-        .footer-container {
-            max-width: 1200px;               /* nice large width, but background stretches */
-            margin: 0 auto;
-            padding: 0 24px;                  /* padding for small screens, keeps background */
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
-            text-align: left;
-        }
-
-        .footer-col h4 {
-            color: #fff;
-            font-size: 1.3rem;
-            font-weight: 500;
-            margin: 0 0 24px 0;
-            border-bottom: 1px solid var(--line);
-            padding-bottom: 12px;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .footer-col h4 i {
-            color: var(--accent);
-            font-size: 1.4rem;
-        }
-
-        .footer-col ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            transition: transform 0.15s ease, color 0.15s;
-            color: #bcbcbc;
-            font-size: 1.05rem;
-        }
-
-        .footer-col ul li i {
-            color: var(--accent);
-            width: 26px;                     /* fixed width for alignment */
-            font-size: 1.3rem;
-            text-align: center;
-        }
-
-        .footer-col ul li:hover {
-            transform: translateX(6px);
-            color: #fff;
-        }
-
-        /* social links: refined, spacious */
-        .social-links {
             display: flex;
             gap: 28px;
-            margin: 16px 0 24px;
-            flex-wrap: wrap;
         }
 
-        .social-links a {
-            color: var(--muted);
-            font-size: 2.4rem;                /* larger presence */
-            transition: all 0.2s ease;
-            line-height: 1;
+        nav a:hover { color: var(--accent); }
+
+        main { padding: 100px 60px; }
+
+        .skills-section {
+            background: var(--surface);
+            padding: 70px 50px;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            text-align: center;
         }
 
-        .social-links a:hover {
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .skill-card {
+            background: var(--surface-2);
+            border: 1px solid var(--line);
+            padding: 50px 25px;
+            border-radius: 16px;
+            transition: all 0.6s cubic-bezier(.4,0,.2,1);
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+        }
+
+        .skill-card i {
             color: var(--accent);
-            transform: scale(1.1) translateY(-4px);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: block;
         }
 
-        .newsletter {
-            font-size: 1rem;
-            color: #aaa;
-            margin: 20px 0 0;
-            border-left: 3px solid var(--accent);
-            padding-left: 20px;
-            font-style: normal;
-            background: rgba(46, 167, 181, 0.05);
-            padding: 16px 20px;
-            border-radius: 8px;
+        footer {
+            background: #000;
+            border-top: 1px solid var(--line);
+            padding: 80px 60px 40px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 28px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 14px;
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .newsletter i {
+        .footer-col h3 i { color: var(--accent); }
+
+        .footer-col ul { list-style: none; }
+
+        .footer-col li {
+            margin-bottom: 18px;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: 0.25s ease;
+            font-weight: 500;
+        }
+
+        .footer-col li i {
             color: var(--accent);
-            font-size: 1.6rem;
+            width: 22px;
         }
 
-        .newsletter span {
-            font-size: 0.95rem;
-            line-height: 1.5;
+        .footer-col li:hover {
+            transform: translateX(6px);
+            color: var(--text);
         }
 
-        /* bottom bar – full width as well */
         .footer-bottom {
-            max-width: 1200px;
-            margin: 48px auto 0;
-            padding: 20px 24px 0;
             border-top: 1px solid var(--line);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            color: #888;
-            font-size: 1rem;
+            margin-top: 60px;
+            padding-top: 25px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.95rem;
         }
 
-        .footer-bottom p {
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        /* Global Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.9s cubic-bezier(.4,0,.2,1), transform 0.9s cubic-bezier(.4,0,.2,1);
         }
 
-        .footer-bottom i.fa-heart {
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll To Top */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: var(--surface-2);
             color: var(--accent);
-            transition: transform 0.2s;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.85);
+            transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease;
+            z-index: 1000;
         }
 
-        .footer-bottom p:hover i.fa-heart {
-            transform: scale(1.3);
+        #scrollTopBtn.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
         }
 
-        /* refined mobile */
-        @media (max-width: 800px) {
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 42px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-                justify-content: center;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
+        #scrollTopBtn:hover {
+            background: var(--accent);
+            color: #000;
         }
 
-        /* preserve original skills mobile */
-        @media (max-width: 700px) {
-            nav {
-                flex-direction: column;
-            }
+        @media (max-width: 768px) {
+            nav, main, footer { padding-left: 30px; padding-right: 30px; }
+            nav { flex-direction: column; text-align: center; }
+            nav ul { flex-direction: column; gap: 18px; }
+        }
 
-            .skills-section {
-                padding: 24px;
-            }
-
-            .skills-section h3 {
-                font-size: 1.45rem;
-            }
-
-            .skills-section ul {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 480px) {
+            .skills-grid { grid-template-columns: 1fr; }
+            #scrollTopBtn { width: 48px; height: 48px; bottom: 20px; right: 20px; }
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <nav>
-            <div>
-                <h1>Portfolio</h1>
-                <h6>Team one Portfolio</h6>
-            </div>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section class="skills-section">
-        <h3><i class="fa-solid fa-gears"></i> Skills We Possess</h3>
+<header>
+    <nav>
+        <div class="brand">
+            <h1>Portfolio</h1>
+            <p>Team One Portfolio</p>
+        </div>
         <ul>
-            <li><i class="fa-solid fa-people-group"></i> Teamwork</li>
-            <li><i class="fa-brands fa-github"></i> GitHub Collaboration</li>
-            <li><i class="fa-brands fa-html5"></i> HTML5</li>
-            <li><i class="fa-solid fa-robot"></i> Robotics Basics</li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="skills-section" id="about">
+        <h2><i class="fa-solid fa-gears"></i> Skills We Possess</h2>
+        <div class="skills-grid">
+            <article class="skill-card">
+                <i class="fa-solid fa-people-group"></i>
+                <p>Teamwork</p>
+            </article>
+            <article class="skill-card">
+                <i class="fa-brands fa-github"></i>
+                <p>GitHub Collaboration</p>
+            </article>
+            <article class="skill-card">
+                <i class="fa-brands fa-html5"></i>
+                <p>HTML5</p>
+            </article>
+            <article class="skill-card">
+                <i class="fa-solid fa-microchip"></i>
+                <p>Robotics & IoT Basics</p>
+            </article>
+        </div>
     </section>
+</main>
 
-    <!-- ===== FULL‑WIDTH, EXPANDED, ICON‑REFINED FOOTER ===== -->
-    <footer>
-        <!-- container stays centered, background full -->
-        <div class="footer-container">
-            <!-- Column 1: Team – icons refined (more specific) -->
-            <div class="footer-col">
-                <h4><i class="fa-solid fa-users-between-lines"></i> Core team</h4>
-                <ul>
-                    <li><i class="fa-solid fa-user-astronaut"></i> Hirwa Amani Topray</li>
-                    <li><i class="fa-solid fa-user-graduate"></i> Ganza Gatwaza Lucky</li>
-                    <li><i class="fa-solid fa-user-tie"></i> AKA Chrysante Lucky</li>
-                </ul>
-            </div>
+<footer>
+    <div class="footer-container">
+        <section class="footer-col">
+            <h3><i class="fa-solid fa-users"></i> Core Team</h3>
+            <ul>
+                <li><i class="fa-brands fa-github"></i><a href="https://github.com/Holy1-2" target="_blank">Hirwa Amani Topray</a></li>
+                <li><i class="fa-solid fa-envelope"></i><a href="mailto:amanitoprayhirwa@gmail.com">amanitoprayhirwa@gmail.com</a></li>
+                <li><i class="fa-brands fa-github"></i><a href="https://github.com/mfuranzimaluckyy-alt" target="_blank">Ganza Gatwaza Lucky</a></li>
+                <li><i class="fa-brands fa-github"></i><a href="https://github.com/chryslucky" target="_blank">AKA Chrysante Lucky</a></li>
+                <li><i class="fa-solid fa-envelope"></i><a href="mailto:chryslucky2@gmail.com">chryslucky2@gmail.com</a></li>
+            </ul>
+        </section>
 
-            <!-- Column 2: Info – crisp icons, more details -->
-            <div class="footer-col">
-                <h4><i class="fa-solid fa-circle-info"></i> Behind the scenes</h4>
-                <ul>
-                    <li><i class="fa-solid fa-school-flag"></i> The One Portfolio</li>
-                    <li><i class="fa-solid fa-microchip"></i> Coding & Robotics Club</li>
-                    <li><i class="fa-solid fa-envelope-open-text"></i> team.one@portfolio.io</li>
-                    <li><i class="fa-solid fa-calendar-check"></i> founded 2023</li>
-                </ul>
-            </div>
+        <section class="footer-col">
+            <h3><i class="fa-solid fa-school"></i> School Information</h3>
+            <ul>
+                <li><i class="fa-solid fa-building-columns"></i> Your School Name</li>
+                <li><i class="fa-solid fa-microchip"></i> Coding & IoT Club</li>
+                <li><i class="fa-solid fa-calendar"></i> 2026</li>
+            </ul>
+        </section>
+    </div>
 
-            <!-- Column 3: Connect – social icons refined, plus extra -->
-            <div class="footer-col">
-                <h4><i class="fa-regular fa-hand-peace"></i> Let's connect</h4>
-                <div class="social-links">
-                    <a href="#" aria-label="GitHub"><i class="fa-brands fa-github-alt"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="X platform"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-                </div>
-                <div class="newsletter">
-                    <i class="fa-regular fa-message"></i>
-                    <span>robotics · code · collaboration — pure teamwork</span>
-                </div>
-            </div>
-        </div>
+    <div class="footer-bottom">
+        © 2026 Your School Name – Coding & IoT Club
+    </div>
+</footer>
 
-        <!-- bottom bar with refined copyright and signature -->
-        <div class="footer-bottom">
-            <p><i class="fa-regular fa-copyright"></i> 2023 Team One Portfolio – all good</p>
-            <p>built with <i class="fa-solid fa-heart"></i> by the club</p>
-        </div>
-    </footer>
+<button id="scrollTopBtn" aria-label="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script>
+    const scrollBtn = document.getElementById("scrollTopBtn");
+
+    // Scroll button fade-in
+    window.addEventListener("scroll", () => {
+        scrollBtn.classList.toggle("show", window.scrollY > 300);
+    });
+
+    scrollBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Reveal animation
+        // Staggered Reveal Animation (one after another)
+    const revealElements = document.querySelectorAll('header, nav, .skills-section, .skill-card, .footer-col, .footer-bottom');
+
+    revealElements.forEach(el => el.classList.add('reveal'));
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const elements = Array.from(revealElements);
+                elements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('active');
+                    }, index * 180);
+                });
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.15 });
+
+    observer.observe(document.querySelector('.skills-section'));
+</script>
+
 </body>
 </html>
