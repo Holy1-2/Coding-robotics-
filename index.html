@@ -13,7 +13,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
 
-    <title>Portfolio – Responsive & Dynamic</title>
+    <title>Portfolio – Dynamic Descriptions</title>
 
     <style>
       /* CSS Reset with modern approach */
@@ -40,19 +40,20 @@
         --border-radius-sm: clamp(8px, 1.5vw, 12px);
         --border-radius-md: clamp(12px, 2vw, 16px);
         --border-radius-lg: clamp(16px, 3vw, 20px);
-        --font-size-xs: clamp(0.75rem, 2vw, 0.875rem);
-        --font-size-sm: clamp(0.875rem, 2.5vw, 1rem);
-        --font-size-md: clamp(1rem, 3vw, 1.125rem);
-        --font-size-lg: clamp(1.25rem, 4vw, 1.5rem);
+        --font-size-xs: clamp(0.7rem, 2vw, 0.8rem);
+        --font-size-sm: clamp(0.8rem, 2.5vw, 0.95rem);
+        --font-size-md: clamp(0.95rem, 3vw, 1.1rem);
+        --font-size-lg: clamp(1.2rem, 4vw, 1.5rem);
         --font-size-xl: clamp(1.5rem, 5vw, 2rem);
-        --font-size-2xl: clamp(2rem, 7vw, 3rem);
-        --font-size-3xl: clamp(2.5rem, 9vw, 4rem);
-        --spacing-xs: clamp(8px, 2vw, 12px);
-        --spacing-sm: clamp(12px, 3vw, 20px);
-        --spacing-md: clamp(20px, 4vw, 30px);
-        --spacing-lg: clamp(30px, 6vw, 50px);
-        --spacing-xl: clamp(40px, 8vw, 80px);
-        --spacing-2xl: clamp(60px, 10vw, 100px);
+        --font-size-2xl: clamp(2rem, 7vw, 2.8rem);
+        --font-size-3xl: clamp(2.2rem, 9vw, 3.5rem);
+        --spacing-xs: clamp(6px, 1.5vw, 10px);
+        --spacing-sm: clamp(10px, 2.5vw, 16px);
+        --spacing-md: clamp(16px, 3.5vw, 24px);
+        --spacing-lg: clamp(24px, 5vw, 35px);
+        --spacing-xl: clamp(35px, 7vw, 50px);
+        --spacing-2xl: clamp(50px, 9vw, 80px);
+        --card-min-height: clamp(200px, 40vh, 280px);
       }
 
       html {
@@ -238,6 +239,7 @@
         margin: var(--spacing-lg) 0;
         width: 100%;
         overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
       }
 
       .skills-section::before {
@@ -271,8 +273,8 @@
 
       .skills-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-        gap: clamp(20px, 4vw, 35px);
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        gap: clamp(20px, 3vw, 30px);
         margin-top: var(--spacing-xl);
         width: 100%;
       }
@@ -280,14 +282,16 @@
       .skill-card {
         background: var(--surface-2);
         border: 1px solid var(--line);
-        padding: clamp(30px, 6vw, 40px) clamp(20px, 4vw, 25px);
+        padding: var(--spacing-lg) var(--spacing-md);
         border-radius: var(--border-radius-lg);
         transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
-        height: 100%;
+        min-height: var(--card-min-height);
         display: flex;
         flex-direction: column;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
       }
 
       .skill-card::before {
@@ -305,8 +309,8 @@
 
       .skill-card:hover {
         border-color: var(--accent);
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 30px 40px rgba(0, 0, 0, 0.6);
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 0 25px 40px rgba(0, 0, 0, 0.6);
       }
 
       .skill-card:hover::before {
@@ -316,7 +320,7 @@
       .skill-card i {
         color: var(--accent);
         font-size: clamp(2rem, 5vw, 2.5rem);
-        margin-bottom: var(--spacing-md);
+        margin-bottom: var(--spacing-sm);
         display: block;
         transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
@@ -331,11 +335,68 @@
         font-size: var(--font-size-lg);
       }
 
+      /* Dynamic description container */
+      .desc-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: clamp(80px, 15vh, 100px);
+        position: relative;
+        margin-top: var(--spacing-xs);
+      }
+
       .skill-card .desc {
         font-size: var(--font-size-sm);
         color: var(--muted);
         line-height: 1.6;
-        flex: 1;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        position: absolute;
+        width: 100%;
+        left: 0;
+        right: 0;
+        padding: 0 var(--spacing-xs);
+        opacity: 0;
+        transform: translateY(10px);
+        pointer-events: none;
+        text-align: center;
+        word-break: break-word;
+      }
+
+      .skill-card .desc.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        position: relative;
+      }
+
+      /* Description navigation dots */
+      .desc-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: var(--spacing-md);
+        flex-wrap: wrap;
+      }
+
+      .desc-dot {
+        width: clamp(6px, 1.5vw, 8px);
+        height: clamp(6px, 1.5vw, 8px);
+        border-radius: 50%;
+        background: var(--line);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .desc-dot.active {
+        background: var(--accent);
+        transform: scale(1.3);
+        box-shadow: 0 0 10px var(--accent);
+      }
+
+      .desc-dot:hover {
+        background: var(--accent);
+        transform: scale(1.2);
       }
 
       /* Enhanced popup for teamwork */
@@ -381,8 +442,8 @@
 
       .footer-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-        gap: clamp(30px, 8vw, 60px);
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+        gap: clamp(25px, 6vw, 50px);
         max-width: 1400px;
         margin: 0 auto;
       }
@@ -407,7 +468,7 @@
       .footer-col h3 i {
         color: var(--accent);
         font-size: var(--font-size-lg);
-        transition: transform 0.3s ease;
+        transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
 
       .footer-col:hover h3 i {
@@ -578,8 +639,8 @@
       .reveal {
         opacity: 0;
         transform: translateY(30px) scale(0.98);
-        transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                    transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1),
+                    transform 1s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform, opacity;
       }
 
@@ -590,9 +651,9 @@
 
       /* Stagger children animations */
       .skills-grid .reveal:nth-child(1) { transition-delay: 0.1s; }
-      .skills-grid .reveal:nth-child(2) { transition-delay: 0.2s; }
-      .skills-grid .reveal:nth-child(3) { transition-delay: 0.3s; }
-      .skills-grid .reveal:nth-child(4) { transition-delay: 0.4s; }
+      .skills-grid .reveal:nth-child(2) { transition-delay: 0.15s; }
+      .skills-grid .reveal:nth-child(3) { transition-delay: 0.2s; }
+      .skills-grid .reveal:nth-child(4) { transition-delay: 0.25s; }
 
       /* Enhanced scroll to top button */
       #scrollTopBtn {
@@ -643,7 +704,7 @@
         font-weight: 600;
         color: var(--accent);
         display: inline-block;
-        transition: opacity 0.5s ease;
+        transition: opacity 0.5s ease, transform 0.5s ease;
         cursor: default;
       }
 
@@ -663,6 +724,7 @@
       @media (max-width: 768px) {
         :root {
           --header-height: 60px;
+          --card-min-height: 240px;
         }
 
         .desktop-nav {
@@ -698,8 +760,12 @@
 
         .member-email {
           white-space: normal;
-          width: 200px;
+          width: 180px;
           text-align: center;
+        }
+
+        .desc-container {
+          min-height: 100px;
         }
       }
 
@@ -707,6 +773,7 @@
       @media (max-width: 480px) {
         :root {
           --header-height: 55px;
+          --card-min-height: 260px;
         }
 
         .brand h1 {
@@ -714,7 +781,7 @@
         }
 
         .brand p {
-          font-size: 0.7rem;
+          font-size: 0.65rem;
         }
 
         .skills-grid {
@@ -735,7 +802,11 @@
 
         .member-email {
           width: 150px;
-          font-size: 0.7rem;
+          font-size: 0.65rem;
+        }
+
+        .desc-container {
+          min-height: 120px;
         }
       }
 
@@ -750,6 +821,10 @@
         .mobile-nav a {
           font-size: var(--font-size-lg);
           padding: var(--spacing-sm);
+        }
+
+        .skills-grid {
+          grid-template-columns: repeat(2, 1fr);
         }
       }
 
@@ -784,6 +859,11 @@
 
         .member-email {
           display: none;
+        }
+
+        .desc-dot {
+          width: 12px;
+          height: 12px;
         }
       }
 
@@ -837,12 +917,22 @@
     <main>
       <section class="skills-section" id="skills">
         <h2 class="skills-title" id="dynamicTitle">Skills We Possess</h2>
-        <div class="skills-grid">
-          <article class="skill-card teamwork reveal">
+        <div class="skills-grid" id="skillsGrid">
+          <!-- Teamwork Card -->
+          <article class="skill-card teamwork reveal" data-card="teamwork">
             <i class="fa-solid fa-people-group"></i>
             <p>Teamwork</p>
-            <div class="desc">
-              Collaboration and synergy to achieve common goals efficiently.
+            <div class="desc-container" id="desc-container-0">
+              <div class="desc active">Collaboration and synergy to achieve common goals efficiently.</div>
+              <div class="desc">Working together to solve complex problems and innovate.</div>
+              <div class="desc">Cross-functional collaboration and effective communication.</div>
+              <div class="desc">Building trust and leveraging diverse strengths.</div>
+            </div>
+            <div class="desc-dots" id="dots-0">
+              <span class="desc-dot active" data-index="0"></span>
+              <span class="desc-dot" data-index="1"></span>
+              <span class="desc-dot" data-index="2"></span>
+              <span class="desc-dot" data-index="3"></span>
             </div>
             <div class="team-popup">
               <strong>Team Members:</strong><br />
@@ -851,29 +941,68 @@
               AKA Chrysante Lucky – chryslucky2@gmail.com
             </div>
           </article>
-          <article class="skill-card reveal">
+
+          <!-- GitHub Card -->
+          <article class="skill-card reveal" data-card="github">
             <a href="https://github.com" target="_blank">
               <i class="fa-brands fa-github"></i>
               <p>GitHub Collaboration</p>
             </a>
-            <div class="desc">
-              Using GitHub for version control, issue tracking, and code reviews.
+            <div class="desc-container" id="desc-container-1">
+              <div class="desc active">Using GitHub for version control, issue tracking, and code reviews.</div>
+              <div class="desc">Collaborative development with pull requests and branching strategies.</div>
+              <div class="desc">Open source contributions and project management.</div>
+              <div class="desc">Continuous integration and automated workflows.</div>
+              <div class="desc">Code documentation and team collaboration tools.</div>
+            </div>
+            <div class="desc-dots" id="dots-1">
+              <span class="desc-dot active" data-index="0"></span>
+              <span class="desc-dot" data-index="1"></span>
+              <span class="desc-dot" data-index="2"></span>
+              <span class="desc-dot" data-index="3"></span>
+              <span class="desc-dot" data-index="4"></span>
             </div>
           </article>
-          <article class="skill-card reveal">
+
+          <!-- HTML5 Card -->
+          <article class="skill-card reveal" data-card="html">
             <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">
               <i class="fa-brands fa-html5"></i>
               <p>HTML5</p>
             </a>
-            <div class="desc">
-              Markup language for structuring web content and semantic design.
+            <div class="desc-container" id="desc-container-2">
+              <div class="desc active">Markup language for structuring web content and semantic design.</div>
+              <div class="desc">Building accessible and SEO-friendly web pages.</div>
+              <div class="desc">Modern HTML5 APIs and multimedia integration.</div>
+              <div class="desc">Responsive design with semantic elements.</div>
+              <div class="desc">Form validation and interactive web components.</div>
+            </div>
+            <div class="desc-dots" id="dots-2">
+              <span class="desc-dot active" data-index="0"></span>
+              <span class="desc-dot" data-index="1"></span>
+              <span class="desc-dot" data-index="2"></span>
+              <span class="desc-dot" data-index="3"></span>
+              <span class="desc-dot" data-index="4"></span>
             </div>
           </article>
-          <article class="skill-card reveal">
+
+          <!-- Robotics & IoT Card -->
+          <article class="skill-card reveal" data-card="iot">
             <i class="fa-solid fa-microchip"></i>
             <p>Robotics & IoT Basics</p>
-            <div class="desc">
-              Fundamentals of building smart devices and integrating sensors.
+            <div class="desc-container" id="desc-container-3">
+              <div class="desc active">Fundamentals of building smart devices and integrating sensors.</div>
+              <div class="desc">Microcontroller programming with Arduino and ESP32.</div>
+              <div class="desc">Wireless communication and cloud connectivity.</div>
+              <div class="desc">Sensor data processing and automation.</div>
+              <div class="desc">Building connected solutions for real-world problems.</div>
+            </div>
+            <div class="desc-dots" id="dots-3">
+              <span class="desc-dot active" data-index="0"></span>
+              <span class="desc-dot" data-index="1"></span>
+              <span class="desc-dot" data-index="2"></span>
+              <span class="desc-dot" data-index="3"></span>
+              <span class="desc-dot" data-index="4"></span>
             </div>
           </article>
         </div>
@@ -968,21 +1097,163 @@
                 entry.target.classList.add("active");
               }, delay);
               
-              // Optional: unobserve after activation
               observer.unobserve(entry.target);
             }
           });
         },
         { 
           threshold: 0.1, 
-          rootMargin: "0px 0px -50px 0px",
-          once: true 
+          rootMargin: "0px 0px -50px 0px"
         }
       );
       
       revealElements.forEach((el) => observer.observe(el));
 
-      // Dynamic text slideshows with enhanced animations
+      // ============ DYNAMIC DESCRIPTION SLIDESHOWS ============
+      
+      // Description sets for each card
+      const descriptionSets = {
+        teamwork: [
+          "Collaboration and synergy to achieve common goals efficiently.",
+          "Working together to solve complex problems and innovate.",
+          "Cross-functional collaboration and effective communication.",
+          "Building trust and leveraging diverse strengths."
+        ],
+        github: [
+          "Using GitHub for version control, issue tracking, and code reviews.",
+          "Collaborative development with pull requests and branching strategies.",
+          "Open source contributions and project management.",
+          "Continuous integration and automated workflows.",
+          "Code documentation and team collaboration tools."
+        ],
+        html: [
+          "Markup language for structuring web content and semantic design.",
+          "Building accessible and SEO-friendly web pages.",
+          "Modern HTML5 APIs and multimedia integration.",
+          "Responsive design with semantic elements.",
+          "Form validation and interactive web components."
+        ],
+        iot: [
+          "Fundamentals of building smart devices and integrating sensors.",
+          "Microcontroller programming with Arduino and ESP32.",
+          "Wireless communication and cloud connectivity.",
+          "Sensor data processing and automation.",
+          "Building connected solutions for real-world problems."
+        ]
+      };
+
+      // Card mapping
+      const cardMapping = {
+        0: 'teamwork',
+        1: 'github',
+        2: 'html',
+        3: 'iot'
+      };
+
+      // Store intervals for cleanup
+      const cardIntervals = {};
+
+      // Initialize dynamic descriptions for each card
+      function initDescriptionSlideshows() {
+        for (let cardId = 0; cardId < 4; cardId++) {
+          const cardType = cardMapping[cardId];
+          const descriptions = descriptionSets[cardType];
+          const descElements = document.querySelectorAll(`#desc-container-${cardId} .desc`);
+          const dots = document.querySelectorAll(`#dots-${cardId} .desc-dot`);
+          
+          if (!descElements.length) continue;
+
+          // Shuffle function for random order
+          function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+          }
+
+          // Shuffle descriptions
+          const shuffledDescs = shuffleArray([...descriptions]);
+          
+          // Update desc elements with shuffled content
+          descElements.forEach((el, index) => {
+            if (index < shuffledDescs.length) {
+              el.textContent = shuffledDescs[index];
+            }
+          });
+
+          let currentIndex = 0;
+          
+          // Function to show description at index
+          function showDescription(index) {
+            // Hide all descriptions
+            descElements.forEach(desc => {
+              desc.classList.remove('active');
+            });
+            
+            // Remove active from all dots
+            dots.forEach(dot => {
+              dot.classList.remove('active');
+            });
+            
+            // Show selected description and dot
+            if (descElements[index]) {
+              descElements[index].classList.add('active');
+            }
+            
+            if (dots[index]) {
+              dots[index].classList.add('active');
+            }
+          }
+
+          // Start with random index
+          currentIndex = Math.floor(Math.random() * descElements.length);
+          showDescription(currentIndex);
+
+          // Auto-rotate with shuffle (random next)
+          const interval = setInterval(() => {
+            // Get random next index (different from current)
+            let nextIndex;
+            do {
+              nextIndex = Math.floor(Math.random() * descElements.length);
+            } while (nextIndex === currentIndex && descElements.length > 1);
+            
+            currentIndex = nextIndex;
+            showDescription(currentIndex);
+          }, getRandomInterval(3500, 5500)); // Random interval between 3.5-5.5 seconds
+
+          cardIntervals[cardId] = interval;
+
+          // Add click handlers to dots
+          dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+              // Clear current interval and restart
+              clearInterval(cardIntervals[cardId]);
+              
+              currentIndex = idx;
+              showDescription(currentIndex);
+              
+              // Restart interval
+              cardIntervals[cardId] = setInterval(() => {
+                let nextIndex;
+                do {
+                  nextIndex = Math.floor(Math.random() * descElements.length);
+                } while (nextIndex === currentIndex && descElements.length > 1);
+                
+                currentIndex = nextIndex;
+                showDescription(currentIndex);
+              }, getRandomInterval(3500, 5500));
+            });
+          });
+        }
+      }
+
+      // Helper for random interval
+      function getRandomInterval(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      // Dynamic text slideshows (other elements)
       
       // 1. Skills title carousel
       const titlePhrases = [
@@ -1010,7 +1281,7 @@
           }, 600);
         }
         
-        setInterval(rotateTitle, 4000);
+        setInterval(rotateTitle, 4500);
       }
 
       // 2. Team name slideshow with fade
@@ -1038,12 +1309,12 @@
         }, 400);
       }
       
-      setInterval(rotateTeamName, 3500);
+      setInterval(rotateTeamName, 3800);
 
       // 3. Dynamic suffix in header
       const suffixEl = document.getElementById("dynamicSuffix");
       if (suffixEl) {
-        const suffixes = ["Portfolio", "Showcase", "Studio", "Hub", "Collective"];
+        const suffixes = ["Portfolio", "Showcase", "Studio", "Hub", "Collective", "Works"];
         let suffixIndex = 0;
         
         function rotateSuffix() {
@@ -1104,7 +1375,7 @@
         }
       });
 
-      // Close mobile menu on window resize (if going to desktop)
+      // Close mobile menu on window resize
       window.addEventListener("resize", () => {
         if (window.innerWidth > 768 && mobileNav.classList.contains("active")) {
           closeMobileMenu();
@@ -1129,7 +1400,7 @@
         
         navLinks.forEach((link) => {
           link.classList.remove("active");
-          const href = link.getAttribute("href").substring(1); // Remove #
+          const href = link.getAttribute("href").substring(1);
           if (href === currentSection) {
             link.classList.add("active");
           }
@@ -1156,23 +1427,15 @@
         document.head.appendChild(style);
       }
 
-      // Parallax effect on scroll (subtle)
-      window.addEventListener("scroll", () => {
-        const scrolled = window.scrollY;
-        const skillsSection = document.querySelector(".skills-section");
-        
-        if (skillsSection && window.innerWidth > 768) {
-          const speed = 0.05;
-          skillsSection.style.backgroundPositionY = `${scrolled * speed}px`;
-        }
-      });
-
       // Add loading animation
       window.addEventListener("load", () => {
         document.body.classList.add("loaded");
         
         // Initial active nav update
         updateActiveNavLink();
+        
+        // Initialize description slideshows after load
+        initDescriptionSlideshows();
       });
 
       // Handle anchor links smoothly
@@ -1189,7 +1452,19 @@
             
             // Update URL without jumping
             history.pushState(null, null, this.getAttribute('href'));
+            
+            // Close mobile menu if open
+            if (mobileNav.classList.contains('active')) {
+              closeMobileMenu();
+            }
           }
+        });
+      });
+
+      // Cleanup intervals on page unload
+      window.addEventListener('beforeunload', () => {
+        Object.values(cardIntervals).forEach(interval => {
+          clearInterval(interval);
         });
       });
     </script>
