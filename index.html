@@ -20,211 +20,58 @@
             --accent: #2ea7b5;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-            scroll-padding-top: 80px;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; scroll-padding-top: 80px; }
         a { text-decoration: none; color: inherit; }
 
-        header {
-            width: 100%;
-            background: #000;
-            border-bottom: 1px solid var(--line);
-        }
-
-        nav {
-            padding: 20px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .brand h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
+        header { width: 100%; background: #000; border-bottom: 1px solid var(--line); }
+        nav { padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .brand h1 { font-size: 2.2rem; font-weight: 700; color: var(--accent); }
         .brand p { color: var(--muted); }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 28px;
-        }
-
+        nav ul { list-style: none; display: flex; gap: 28px; }
         nav a:hover { color: var(--accent); }
-
         main { padding: 100px 60px; }
 
-        .skills-section {
-            background: var(--surface);
-            padding: 70px 50px;
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-            text-align: center;
-        }
+        .skills-section { background: var(--surface); padding: 70px 50px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 35px; margin-top: 50px; }
+        .skill-card { background: var(--surface-2); border: 1px solid var(--line); padding: 50px 25px; border-radius: 16px; transition: all 0.6s cubic-bezier(.4,0,.2,1); }
+        .skill-card:hover { border-color: var(--accent); transform: translateY(-8px); }
+        .skill-card i { color: var(--accent); font-size: 2rem; margin-bottom: 20px; display: block; }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 35px;
-            margin-top: 50px;
-        }
-
-        .skill-card {
-            background: var(--surface-2);
-            border: 1px solid var(--line);
-            padding: 50px 25px;
-            border-radius: 16px;
-            transition: all 0.6s cubic-bezier(.4,0,.2,1);
-        }
-
-        .skill-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-8px);
-        }
-
-        .skill-card i {
-            color: var(--accent);
-            font-size: 2rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        footer {
-            background: #000;
-            border-top: 1px solid var(--line);
-            padding: 80px 60px 40px;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 60px;
-        }
-
-        .footer-col h3 {
-            margin-bottom: 28px;
-            font-weight: 600;
-            border-bottom: 1px solid var(--line);
-            padding-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
+        footer { background: #000; border-top: 1px solid var(--line); padding: 80px 60px 40px; }
+        .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; }
+        .footer-col h3 { margin-bottom: 28px; font-weight: 600; border-bottom: 1px solid var(--line); padding-bottom: 14px; display: flex; align-items: center; gap: 12px; }
         .footer-col h3 i { color: var(--accent); }
-
         .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 18px; color: var(--muted); position: relative; transition: 0.3s ease; font-weight: 500; }
 
-        .footer-col li {
-            margin-bottom: 18px;
-            color: var(--muted);
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            transition: 0.25s ease;
-            font-weight: 500;
-        }
+        .team-member { position: relative; display: flex; align-items: center; gap: 10px; padding: 16px 20px; border: 1px solid var(--line); border-radius: 14px; cursor: pointer; background: var(--surface-2); transition: all 0.35s cubic-bezier(.4,0,.2,1); }
+        .team-member:hover { border-color: var(--accent); transform: translateY(-6px); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .team-member i { font-size: 1.1rem; }
 
-        .footer-col li i {
-            color: var(--accent);
-            width: 22px;
-        }
+        .member-email { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -40%) scale(0.9); background: rgba(16,16,16,0.95); backdrop-filter: blur(8px); border: 1px solid var(--line); padding: 10px 16px; border-radius: 10px; font-size: 0.85rem; color: var(--text); opacity: 0; pointer-events: none; white-space: nowrap; transition: all 0.3s cubic-bezier(.4,0,.2,1); box-shadow: 0 8px 25px rgba(0,0,0,0.35); }
+        .member-email::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); border-width: 6px; border-style: solid; border-color: rgba(16,16,16,0.95) transparent transparent transparent; }
+        .team-member:hover .member-email { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
-        .footer-col li:hover {
-            transform: translateX(6px);
-            color: var(--text);
-        }
+        .social-links { display: flex; gap: 18px; margin-top: 25px; }
+        .social-links a { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--line); background: var(--surface-2); transition: 0.3s ease; font-size: 1.1rem; }
+        .social-links a:hover { background: var(--accent); color: #000; transform: translateY(-4px); }
+        .footer-col li i { color: var(--accent); width: 22px; }
+        .footer-col li:hover { transform: translateX(6px); color: var(--text); }
+        .footer-bottom { border-top: 1px solid var(--line); margin-top: 60px; padding-top: 25px; text-align: center; color: var(--muted); font-size: 0.95rem; }
 
-        .footer-bottom {
-            border-top: 1px solid var(--line);
-            margin-top: 60px;
-            padding-top: 25px;
-            text-align: center;
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
+        .reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.9s cubic-bezier(.4,0,.2,1), transform 0.9s cubic-bezier(.4,0,.2,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        #scrollTopBtn { position: fixed; bottom: 30px; right: 30px; width: 55px; height: 55px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface-2); color: var(--accent); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(20px) scale(0.85); transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease; z-index: 1000; }
+        #scrollTopBtn.show { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+        #scrollTopBtn:hover { background: var(--accent); color: #000; }
 
-        /* Global Reveal Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.9s cubic-bezier(.4,0,.2,1), transform 0.9s cubic-bezier(.4,0,.2,1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Scroll To Top */
-        #scrollTopBtn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            border: 1px solid var(--line);
-            background: var(--surface-2);
-            color: var(--accent);
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px) scale(0.85);
-            transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease;
-            z-index: 1000;
-        }
-
-        #scrollTopBtn.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0) scale(1);
-        }
-
-        #scrollTopBtn:hover {
-            background: var(--accent);
-            color: #000;
-        }
-
-        @media (max-width: 768px) {
-            nav, main, footer { padding-left: 30px; padding-right: 30px; }
-            nav { flex-direction: column; text-align: center; }
-            nav ul { flex-direction: column; gap: 18px; }
-        }
-
-        @media (max-width: 480px) {
-            .skills-grid { grid-template-columns: 1fr; }
-            #scrollTopBtn { width: 48px; height: 48px; bottom: 20px; right: 20px; }
-        }
+        @media (max-width: 768px) { nav, main, footer { padding-left: 30px; padding-right: 30px; } nav { flex-direction: column; text-align: center; } nav ul { flex-direction: column; gap: 18px; } }
+        @media (max-width: 480px) { .skills-grid { grid-template-columns: 1fr; } #scrollTopBtn { width: 48px; height: 48px; bottom: 20px; right: 20px; } }
     </style>
 </head>
-
 <body>
-
 <header>
     <nav>
         <div class="brand">
@@ -238,97 +85,54 @@
         </ul>
     </nav>
 </header>
-
 <main>
     <section class="skills-section" id="about">
         <h2><i class="fa-solid fa-gears"></i> Skills We Possess</h2>
         <div class="skills-grid">
-            <article class="skill-card">
-                <i class="fa-solid fa-people-group"></i>
-                <p>Teamwork</p>
-            </article>
-            <article class="skill-card">
-                <i class="fa-brands fa-github"></i>
-                <p>GitHub Collaboration</p>
-            </article>
-            <article class="skill-card">
-                <i class="fa-brands fa-html5"></i>
-                <p>HTML5</p>
-            </article>
-            <article class="skill-card">
-                <i class="fa-solid fa-microchip"></i>
-                <p>Robotics & IoT Basics</p>
-            </article>
+            <article class="skill-card"><i class="fa-solid fa-people-group"></i><p>Teamwork</p></article>
+            <article class="skill-card"><a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i><p>GitHub Collaboration</p></a></article>
+            <article class="skill-card"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><i class="fa-brands fa-html5"></i><p>HTML5</p></a></article>
+            <article class="skill-card"><i class="fa-solid fa-microchip"></i><p>Robotics & IoT Basics</p></article>
         </div>
     </section>
 </main>
-
 <footer>
     <div class="footer-container">
         <section class="footer-col">
             <h3><i class="fa-solid fa-users"></i> Core Team</h3>
             <ul>
-                <li><i class="fa-brands fa-github"></i><a href="https://github.com/Holy1-2" target="_blank">Hirwa Amani Topray</a></li>
-                <li><i class="fa-solid fa-envelope"></i><a href="mailto:amanitoprayhirwa@gmail.com">amanitoprayhirwa@gmail.com</a></li>
-                <li><i class="fa-brands fa-github"></i><a href="https://github.com/mfuranzimaluckyy-alt" target="_blank">Ganza Gatwaza Lucky</a></li>
-                <li><i class="fa-brands fa-github"></i><a href="https://github.com/chryslucky" target="_blank">AKA Chrysante Lucky</a></li>
-                <li><i class="fa-solid fa-envelope"></i><a href="mailto:chryslucky2@gmail.com">chryslucky2@gmail.com</a></li>
+                <li><a href="https://github.com/Holy1-2" target="_blank" class="team-member"><i class="fa-brands fa-github"></i> Hirwa Amani Topray<div class="member-email">amanitoprayhirwa@gmail.com</div></a></li>
+                <li><a href="https://github.com/mfuranzimaluckyy-alt" target="_blank" class="team-member"><i class="fa-brands fa-github"></i> Ganza Gatwaza Lucky<div class="member-email">mfuranzimaluckyy.alt@gmail.com</div></a></li>
+                <li><a href="https://github.com/chryslucky" target="_blank" class="team-member"><i class="fa-brands fa-github"></i> AKA Chrysante Lucky<div class="member-email">chryslucky2@gmail.com</div></a></li>
             </ul>
         </section>
-
         <section class="footer-col">
             <h3><i class="fa-solid fa-school"></i> School Information</h3>
             <ul>
-                <li><i class="fa-solid fa-building-columns"></i> Your School Name</li>
+                <li><a href="https://mipc.ac.rw/" target="_blank" style="display:flex; align-items:center; gap:14px;"><i class="fa-solid fa-building-columns"></i> MIPC – Muhabura Integrated PolythecnicCollege</a></li>
                 <li><i class="fa-solid fa-microchip"></i> Coding & IoT Club</li>
                 <li><i class="fa-solid fa-calendar"></i> 2026</li>
             </ul>
+            <div class="social-links">
+                <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </div>
         </section>
     </div>
-
-    <div class="footer-bottom">
-        © 2026 Your School Name – Coding & IoT Club
-    </div>
+    <div class="footer-bottom">© 2026 MIPC – Muhabura Integrated PolythecnicCollege | Coding & IoT Club</div>
 </footer>
-
-<button id="scrollTopBtn" aria-label="Scroll to top">
-    <i class="fa-solid fa-arrow-up"></i>
-</button>
-
+<button id="scrollTopBtn" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
 <script>
     const scrollBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => { scrollBtn.classList.toggle("show", window.scrollY > 300); });
+    scrollBtn.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: "smooth" }); });
 
-    // Scroll button fade-in
-    window.addEventListener("scroll", () => {
-        scrollBtn.classList.toggle("show", window.scrollY > 300);
-    });
-
-    scrollBtn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    // Reveal animation
-        // Staggered Reveal Animation (one after another)
     const revealElements = document.querySelectorAll('header, nav, .skills-section, .skill-card, .footer-col, .footer-bottom');
-
     revealElements.forEach(el => el.classList.add('reveal'));
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const elements = Array.from(revealElements);
-                elements.forEach((el, index) => {
-                    setTimeout(() => {
-                        el.classList.add('active');
-                    }, index * 180);
-                });
-                observer.disconnect();
-            }
-        });
-    }, { threshold: 0.15 });
-
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { const elements = Array.from(revealElements); elements.forEach((el, index) => { setTimeout(() => { el.classList.add('active'); }, index * 180); }); observer.disconnect(); } }); }, { threshold: 0.15 });
     observer.observe(document.querySelector('.skills-section'));
 </script>
-
 </body>
 </html>
