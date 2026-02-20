@@ -1,114 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <title>Portfolio</title>
 
 <style>
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial, sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
 }
 
 body{
-    background:#f4f4f4;
+  background:#f4f4f4;
 }
 
 /* HEADER */
 header{
-    background:#000;
-    padding:18px 0;
-    border-bottom:3px solid #00E5FF;
+  background:#000;
+  padding:18px 0;
+  border-bottom:3px solid #00E5FF;
 }
 
 nav{
-    width:85%;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+  width:85%;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 /* LOGO AREA */
 .logo-area h1{
-    color:#00E5FF;
-    font-size:32px;
-    letter-spacing:2px;
+  color:#00E5FF;
+  font-size:32px;
+  letter-spacing:2px;
 }
 
 .logo-area h6{
-    color:#ccc;
-    font-weight:normal;
-    font-size:12px;
+  color:#ccc;
+  font-weight:normal;
+  font-size:12px;
 }
 
 /* NAV LINKS */
 nav ul{
-    list-style:none;
-    display:flex;
-    gap:30px;
+  list-style:none;
+  display:flex;
+  gap:30px;
 }
 
 nav ul li a{
-    color:white;
-    text-decoration:none;
-    font-size:16px;
-    padding-bottom:5px;
-    transition:0.3s;
-    border-bottom:2px solid transparent;
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  padding-bottom:5px;
+  transition:0.3s;
+  border-bottom:2px solid transparent;
 }
 
 nav ul li a:hover{
-    color:#00E5FF;
-    border-bottom:2px solid #00E5FF;
+  color:#00E5FF;
+  border-bottom:2px solid #00E5FF;
+}
+
+/* TEAM CARD */
+.team-card{
+  position: relative;
+  width: 240px;
+  min-height: 240px;
+  padding: 18px;
+  border-radius: 12px;
+  background: #0b0b0b;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+/* Rainbow border layer */
+.team-card::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px; /* Border thickness */
+  border-radius: 12px;
+  background: linear-gradient(
+    45deg,
+    red,
+    orange,
+    yellow,
+    green,
+    cyan,
+    blue,
+    violet,
+    red
+  );
+  background-size: 400%;
+  animation: rainbow 6s linear infinite;
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show border on hover */
+.team-card:hover::before{
+  opacity: 1;
+}
+
+.team-card:hover{
+  transform: translateY(-6px);
+}
+
+@keyframes rainbow{
+  0% { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
 }
 
 /* FOOTER */
 footer{
-    background:#000;
-    color:white;
-    text-align:center;
-    padding:15px 0;
-    margin-top:60px;
-    border-top:3px solid #00E5FF;
+  background:#000;
+  color:white;
+  text-align:center;
+  padding:15px 0;
+  margin-top:60px;
+  border-top:3px solid #00E5FF;
 }
 
 /* RESPONSIVE */
 @media(max-width:768px){
-    nav{
-        flex-direction:column;
-        gap:15px;
-    }
+  nav{
+    flex-direction:column;
+    gap:15px;
+  }
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-    <nav>
+  <nav>
+    <div class="logo-area">
+      <h1>Portfolio</h1>
+      <h6>Team One Portfolio</h6>
+    </div>
 
-        <div class="logo-area">
-            <h1>Portfolio</h1>
-            <h6>Team One Portfolio</h6>
-        </div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-            <ul>
-                <li><a href="#about"> About</a></li>
-                <li><a href="#projects"> Projects</a></li>
-                <li><a href="#contact"> Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <footer>
-        <p>&copy; 2023 The one Portfolio</p>
-    </footer>
+<section id="about" style="background:#000; border-top:1px solid #222; padding:60px 0;">
+  <div class="container" style="color:#fff; width:85%; margin:auto;">
+    <h2 style="margin-bottom:20px;">About Our Team</h2>
+
+    <p style="color:#bbb; line-height:1.6;">
+      The Coding & Robotics Club is a group of students passionate about technology and innovation.
+      We enjoy working together to create meaningful and creative projects.
+    </p>
+
+    <p style="color:#bbb; line-height:1.6; margin-top:15px;">
+      Currently, we are learning HTML, GitHub collaboration, version control, and the basics of robotics.
+    </p>
+
+    <div style="margin-top:25px;">
+      <img src="robotics.jpg" alt="Robotics" width="300" style="border:1px solid #222;" />
+    </div>
+  </div>
+</section>
+
+<section id="team" style="background:#000; border-top:1px solid #222; padding:60px 0;">
+  <div class="container" style="color:#fff; width:85%; margin:auto;">
+    <h2 style="margin-bottom:40px;">Team Members</h2>
+
+    <ul style="list-style:none; padding:0; margin:0; display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+      <li class="team-card">
+        <strong style="display:block; margin-bottom:12px; font-size:16px; color:#fff;">
+          Mfuranzima Lucky
+        </strong>
+        <p style="color:#bbb; line-height:1.5; font-size:14px;">
+          Lucky is passionate about web development and robotics.
+          He enjoys building structured websites and learning new technologies.
+        </p>
+      </li>
+
+      <li class="team-card">
+        <strong style="display:block; margin-bottom:12px; font-size:16px; color:#fff;">
+          Hirwa Amani Topray
+        </strong>
+        <p style="color:#bbb; line-height:1.5; font-size:14px;">
+          Amani focuses on teamwork and creative problem solving.
+          He contributes ideas and supports collaboration within the group.
+        </p>
+      </li>
+
+      <li class="team-card">
+        <strong style="display:block; margin-bottom:12px; font-size:16px; color:#fff;">
+          AKA Lucky Chrysante
+        </strong>
+        <p style="color:#bbb; line-height:1.5; font-size:14px;">
+          Chrysante is interested in robotics and innovation.
+          He enjoys exploring technical solutions and improving his coding skills.
+        </p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2023 The one Portfolio</p>
+</footer>
+
 </body>
 </html>
