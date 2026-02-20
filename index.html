@@ -93,6 +93,70 @@ h1 {
   
     margin: 0px;
 }
+
+
+
+
+.team-card {
+    position: relative;
+    width: 240px;
+    min-height: 240px;
+    padding: 18px;
+    border-radius: 12px;
+    background: #0b0b0b;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+/* Rainbow border layer */
+.team-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px; /* Border thickness */
+    border-radius: 12px;
+    background: linear-gradient(
+        45deg,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet,
+        red
+    );
+    background-size: 400%;
+    animation: rainbow 6s linear infinite;
+
+    /* THIS makes it a border only */
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Show border on hover */
+.team-card:hover::before {
+    opacity: 1;
+}
+
+.team-card:hover {
+    transform: translateY(-6px);
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+}
+
+
+
 </style>
 <body>
     <header>
@@ -136,20 +200,11 @@ h1 {
     <div class="container" style="color:#fff;">
 
         <h2 style="margin-bottom:40px;">Team Members</h2>
-<ul style="list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
 
-    <li style="
-        background:#0b0b0b;
-        width:240px;
-        min-height:240px;
-        padding:18px;
-        border:1px solid #222;
-        border-radius:12px;
-        box-shadow:0 6px 18px rgba(0,0,0,0.6);
-        display:flex;
-        flex-direction:column;
-    ">
-        <strong style="display:block; margin-bottom:12px; font-size:16px;">
+        <ul style="list-style:none; padding:0; margin:0; display:flex; gap:20px; justify-content:center;">
+
+    <li class="team-card">
+        <strong style="display:block; margin-bottom:12px; font-size:16px; color:#fff;">
             Mfuranzima Lucky
         </strong>
         <p style="color:#bbb; line-height:1.5; font-size:14px;">
@@ -158,18 +213,8 @@ h1 {
         </p>
     </li>
 
-    <li style="
-        background:#0b0b0b;
-        width:240px;
-        min-height:240px;
-        padding:18px;
-        border:1px solid #222;
-        border-radius:12px;
-        box-shadow:0 6px 18px rgba(0,0,0,0.6);
-        display:flex;
-        flex-direction:column;
-    ">
-        <strong style="display:block; margin-bottom:12px; font-size:16px;">
+    <li class="team-card">
+        <strong style="display:block; margin-bottom:12px; font-size:16px; color:#fff;">
             Hirwa Amani Topray
         </strong>
         <p style="color:#bbb; line-height:1.5; font-size:14px;">
@@ -178,18 +223,8 @@ h1 {
         </p>
     </li>
 
-    <li style="
-        background:#0b0b0b;
-        width:240px;
-        min-height:240px;
-        padding:18px;
-        border:1px solid #222;
-        border-radius:12px;
-        box-shadow:0 6px 18px rgba(0,0,0,0.6);
-        display:flex;
-        flex-direction:column;
-    ">
-        <strong style="display:block; margin-bottom:12px; font-size:16px;">
+    <li class="team-card">
+        <strong style="display:block; margin-bottom:12px; font-size:16px; color:#fff;">
             AKA Lucky Chrysante
         </strong>
         <p style="color:#bbb; line-height:1.5; font-size:14px;">
@@ -197,6 +232,11 @@ h1 {
             He enjoys exploring technical solutions and improving his coding skills.
         </p>
     </li>
+
+
+
+
+
 
 </ul>
 
